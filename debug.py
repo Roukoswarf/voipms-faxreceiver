@@ -8,4 +8,4 @@ if __name__ == '__main__':
 	def cacheing_templates_in_dev_mode_is_bad():
 		TEMPLATES.clear()
 
-	run(server='cheroot', app=main.app, host='::', port=8080, reloader=True, debug=True)
+	run(app=main.app, host='::', port=8080, reloader=True, debug=True)
