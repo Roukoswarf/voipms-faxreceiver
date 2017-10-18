@@ -7,7 +7,7 @@ def fax():
 	for item in request.forms:
 		print(item)
 	filename = request.forms.get('title')
-	fullpath = path.join(faxdir, filename)
+	fullpath = path.join(faxdir, filename+'.pdf')
 	with open(fullpath, 'wb', 0) as f:
 		f.write(request.body.read())
 	cupsconn.printFile('faxprinter', fullpath, filename)
