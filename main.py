@@ -26,4 +26,4 @@ def fax():
 	pdf.save(filename)
 	
 	cupsconn.printFile(printer, filename, path.basename(filename), {})
-	return(0)
+	return("ok")
