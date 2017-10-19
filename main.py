@@ -1,7 +1,7 @@
 from bottle import get, post, request
 from init import app, cupsconn
 from os import path, makedirs, extsep
-from config import faxdir
+from config import faxdir, printer
 from datetime import datetime
 
 @post('/')
