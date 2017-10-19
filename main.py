@@ -17,11 +17,11 @@ def fax():
 	faxtime = datetime.now()
 	
 	filename = path.join(faxdir,
-						 faxto,
-						 faxtime.year,
-						 faxtime.month,
-						 faxtime.day,
-						 faxfrom+extsep+'pdf')
+						 str(faxto),
+						 str(faxtime.year),
+						 str(faxtime.month),
+						 str(faxtime.day),
+						 str(faxfrom)+extsep+'pdf')
 	
 	# make path
 	makedirs(path.dirname(filename), exist_ok=True)
