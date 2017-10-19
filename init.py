@@ -1,5 +1,5 @@
 from bottle import default_app, response
-from bottle import debug as 
+from bottle import debug
 from config import *
 import cups
 
