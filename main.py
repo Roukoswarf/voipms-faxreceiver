@@ -18,9 +18,9 @@ def fax():
 						 str(faxtime.year),
 						 str(faxtime.month),
 						 str(faxtime.day),
-						 '{}{}{}{}'.format(
+						 '{} {}{}{}'.format(
 							 str(faxfrom),
-							 faxtime.strftime('%H-%M-%S'),
+							 faxtime.strftime('%H:%M:%S'),
 							 extsep,
 							 'pdf'
 							 )
