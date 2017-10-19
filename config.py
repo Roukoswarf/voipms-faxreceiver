@@ -1,3 +1,3 @@
 faxdir = 'faxes'
 printer = 'faxprinter'
-showerrors = True
+hideerrors = False

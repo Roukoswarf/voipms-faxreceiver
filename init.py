@@ -1,7 +1,8 @@
-from bottle import default_app, response, debug
+from bottle import default_app, response
+from bottle import debug as 
 from config import *
 import cups
 
-debug(showerrors)
 cupsconn = cups.Connection()
 app = default_app()
+app.catchall = showerrors
