@@ -1,14 +1,31 @@
 from bottle import get, post, request
 from init import app, cupsconn
-from os import path
+from os import path, makedirs, extsep
+from config import faxdir
+from datetime import datetime
 
 @post('/')
 def fax():
 	for item in request.forms:
 		print(item)
-	filename = request.forms.get('title')
-	fullpath = path.join(faxdir, filename+'.pdf')
-	with open(fullpath, 'wb', 0) as f:
-		f.write(request.body.read())
-	cupsconn.printFile('faxprinter', fullpath, filename)
+		
+	pdf = request.files.get('pdf')
+	
+	# generate filename
+	faxfrom = request.forms.get('from')
+	faxto = request.forms.get('to')
+	faxtime = datetime.now()
+	
+	filename = path.join(faxdir,
+						 faxto,
+						 faxtime.year,
+						 faxtime.month,
+						 faxtime.day,
+						 faxfrom+extsep+'pdf')
+	
+	# make path
+	makedirs(path.dirname(filename), exist_ok=True)
+	pdf.save(filename)
+	
+	cupsconn.printFile('faxprinter', filename, path.basename(filename))
 	return(0)
