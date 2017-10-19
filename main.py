@@ -27,5 +27,5 @@ def fax():
 	makedirs(path.dirname(filename), exist_ok=True)
 	pdf.save(filename)
 	
-	cupsconn.printFile('faxprinter', filename, path.basename(filename))
+	cupsconn.printFile('faxprinter', filename, path.basename(filename), {})
 	return(0)
