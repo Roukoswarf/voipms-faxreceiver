@@ -6,17 +6,12 @@ from datetime import datetime
 
 @post('/')
 def fax():
-	for item in request.forms:
-		print(item)
-		
 	pdf = request.files.get('pdf')
 	
 	# generate filename
 	faxfrom = request.forms.get('from')
 	faxto = request.forms.get('to')
 	faxtime = datetime.now()
-	
-	print(faxdir, faxto, faxtime, faxfrom, extsep)
 	
 	filename = path.join(faxdir,
 						 str(faxto),
@@ -30,5 +25,5 @@ def fax():
 	
 	pdf.save(filename)
 	
-	cupsconn.printFile('faxprinter', filename, path.basename(filename), {})
+	cupsconn.printFile(printer, filename, path.basename(filename), {})
 	return(0)

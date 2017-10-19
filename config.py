@@ -1,1 +1,2 @@
 faxdir = 'faxes'
+printer = 'faxprinter'
