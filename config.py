@@ -1,1 +1,1 @@
-faxdir = '.faxes/'
+faxdir = 'faxes'

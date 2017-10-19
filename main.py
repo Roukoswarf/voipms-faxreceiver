@@ -16,6 +16,8 @@ def fax():
 	faxto = request.forms.get('to')
 	faxtime = datetime.now()
 	
+	print(faxdir, faxto, faxtime, faxfrom, extsep)
+	
 	filename = path.join(faxdir,
 						 str(faxto),
 						 str(faxtime.year),
@@ -25,6 +27,7 @@ def fax():
 	
 	# make path
 	makedirs(path.dirname(filename), exist_ok=True)
+	
 	pdf.save(filename)
 	
 	cupsconn.printFile('faxprinter', filename, path.basename(filename), {})
