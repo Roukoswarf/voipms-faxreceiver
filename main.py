@@ -18,7 +18,13 @@ def fax():
 						 str(faxtime.year),
 						 str(faxtime.month),
 						 str(faxtime.day),
-						 str(faxfrom)+extsep+'pdf')
+						 '{}{}{}{}'.format(
+							 str(faxfrom),
+							 faxtime.strftime('%H-%M-%S'),
+							 extsep,
+							 'pdf'
+							 )
+						 )
 	
 	# make path
 	makedirs(path.dirname(filename), exist_ok=True)
