@@ -5,4 +5,4 @@ import cups
 
 cupsconn = cups.Connection()
 app = default_app()
-app.catchall = showerrors
+app.catchall = hideerrors
