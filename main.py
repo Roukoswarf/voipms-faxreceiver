@@ -3,6 +3,7 @@ from init import app, cupsconn
 from os import path, makedirs, extsep
 from config import faxdir, printer
 from datetime import datetime
+from subprocess import call
 
 @post('/')
 def fax():
@@ -30,6 +31,8 @@ def fax():
 	makedirs(path.dirname(filename), exist_ok=True)
 	
 	pdf.save(filename)
+	
+	call(['/usr/bin/pdfjam', '--outfile', filename, '--paper', 'letterpaper', filename])
 	
 	cupsconn.printFile(printer, filename, path.basename(filename), {})
 	return("ok")
